@@ -1,0 +1,41 @@
+1)mysql> select B.color
+
+ -> from BOAT B,SAILOR S,RESERVE R
+
+ -> where B.Bid=R.Bid AND S.Sid=R.Sid AND S.Sname='Raj';
+
+
+ 2)mysql> select S.Sname 
+
+ -> from SAILOR S,BOAT B,RESERVE R 
+
+ -> where S.Sid=R.Sid AND 
+
+ -> R.Bid in (select Bid
+
+ -> from BOAT
+
+ -> where color="red" OR color="green");
+
+
+ 3)mysql> select distinct S.Sname from SAILOR S,BOAT B,RESERVE R where S.Sid=R.Sid AND 
+
+R.Bid in (select Bid from BOAT where color="red" OR color="green");
+
+
+4)mysql> select S.Sname,COUNT(R.Bid)
+
+ -> from SAILOR S,RESERVE R
+
+ -> where S.Sid=R.Sid
+
+ -> group by S.Sname;
+
+
+ 5)mysql> select S.Sname 
+
+ -> from SAILOR S,RESERVE R
+
+ -> where S.Sid=R.sid AND R.Bid="B104";
+
+Empty set (0.00 sec)
