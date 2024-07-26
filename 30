@@ -18,9 +18,11 @@
  -> where color="red" OR color="green");
 
 
- 3)mysql> select distinct S.Sname from SAILOR S,BOAT B,RESERVE R where S.Sid=R.Sid AND 
+ 3)mysql> select S.Sid 
 
-R.Bid in (select Bid from BOAT where color="red" OR color="green");
+ -> from SAILOR S,RESERVE R 
+
+ -> where S.Age>25 AND S.Sid not in(select sid from RESERVE);
 
 
 4)mysql> select S.Sname,COUNT(R.Bid)
